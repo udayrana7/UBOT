@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ubot YouTube Video Summarizer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="gradient-header">
+        <div class="logo">
+            <h1 style="font-weight: 700; color: white; font-family: 'Inter', sans-serif;">Ubot</h1>
+            <div class="logo-subtitle">AI-Powered Intelligence</div>
+        </div>
+        <div class="user">
+            <p>Sukhjot Singh</p>
+            <p>Amrit Singh</p>
+            <p>Harsh Rana</p>
+        </div>
+    </header>
+    
+    <main>
+        <section class="hero-section">
+            <div class="hero-content">
+                <h2 class="hero-title">YouTube Video Summarizer</h2>
+                <p class="hero-description">Transform lengthy YouTube videos into concise, intelligent summaries with our advanced AI technology. Save time and extract key insights instantly.</p>
+                <div class="input-container">
+                    <div class="input-wrapper">
+                        <input type="text" id="youtube-url" placeholder="Paste your YouTube URL here..." class="enhanced-input">
+                        <button id="generate-summary" class="enhanced-button">
+                            <span class="button-text">Generate Summary</span>
+                            <div class="button-icon">🚀</div>
+                        </button>
+                    </div>
+                    <div id="spinner" class="spinner" style="display: none;"></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="video-summary hidden">
+            <div class="summary-tabs">
+                <button class="tablink active" onclick="openTab(event, 'transcript')">
+                    <span class="tab-icon">📝</span>
+                    <span class="tab-text">Transcript</span>
+                </button>
+                <button class="tablink" onclick="openTab(event, 'summary')">
+                    <span class="tab-icon">✨</span>
+                    <span class="tab-text">Summary</span>
+                </button>
+                <button class="tablink" onclick="openTab(event, 'aichat')">
+                    <span class="tab-icon">🤖</span>
+                    <span class="tab-text">AI Chat</span>
+                </button>
+            </div>
+            
+            <div id="transcript" class="tabcontent active">
+                <!-- Transcript content goes here -->
+            </div>
+            
+            <div id="summary" class="tabcontent">
+                <!-- Summary content goes here -->
+            </div>
+            
+            <div id="aichat" class="tabcontent">
+                <div class="ai-chat-container">
+                    <div class="ai-chat-header">
+                        <h3>💬 Ask AI About This Video</h3>
+                        <p>Get intelligent answers to your questions about the video content</p>
+                    </div>
+                    <div class="input-group">
+                        <input type="text" id="ai-question" placeholder="What would you like to know about this video?" class="ai-input">
+                        <button id="ask-ai" class="ai-button">
+                            <span>Ask AI</span>
+                            <span class="ai-icon">🧠</span>
+                        </button>
+                    </div>
+                    <div id="ai-response" class="ai-response-area">
+                        <!-- AI Chat response goes here -->
+                    </div>
+                    <div id="ai-spinner" class="spinner" style="display: none;"></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="features-section">
+            <div class="section-header">
+                <h2>How to Summarize YouTube Videos?</h2>
+                <p>Transform your video watching experience in just 3 simple steps</p>
+            </div>
+            
+            <div class="steps-container">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Get YouTube Video Link</h3>
+                        <p>Copy and paste any YouTube video URL into Ubot's intelligent interface</p>
+                    </div>
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Generate AI Summary</h3>
+                        <p>Click generate and watch our AI extract key insights and create comprehensive summaries</p>
+                    </div>
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Read & Interact</h3>
+                        <p>Read the concise summary and chat with AI about specific video content</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="use-cases-section">
+            <div class="section-header">
+                <h3>Designed for Every Mind</h3>
+                <p>Tailored solutions for students, researchers, and creative professionals</p>
+            </div>
+            
+            <div class="use-cases-grid">
+                <div class="use-case-card">
+                    <div class="card-image">
+                        <img src="{{ url_for('static', filename='images/Professionals__4eeb84165cd57034558a332d71c45345.png') }}" alt="Students">
+                    </div>
+                    <div class="card-content">
+                        <h4>🎓 For Students</h4>
+                        <p>Accelerate your learning with intelligent summaries of educational content, lectures, and tutorials.</p>
+                    </div>
+                </div>
+                
+                <div class="use-case-card">
+                    <div class="card-image">
+                        <img src="{{ url_for('static', filename='images/Researchers__73d891e8b3af9dd46a1fa4748406cc2d.png') }}" alt="Professionals">
+                    </div>
+                    <div class="card-content">
+                        <h4>💼 For Professionals</h4>
+                        <p>Stay ahead with quick insights from industry talks, conferences, and professional development content.</p>
+                    </div>
+                </div>
+                
+                <div class="use-case-card">
+                    <div class="card-image">
+                        <img src="{{ url_for('static', filename='images/Students-1__86c48ffecac66b48d57595a7662fd4a4.png') }}" alt="Researchers">
+                    </div>
+                    <div class="card-content">
+                        <h4>🔬 For Researchers</h4>
+                        <p>Efficiently process vast amounts of video content with AI-powered analysis and intelligent extraction.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
